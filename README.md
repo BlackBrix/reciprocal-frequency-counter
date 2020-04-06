@@ -1,6 +1,6 @@
 # reciprocal frequency-counter  
 reciprocal frequency counter (6-digits) with Arduino Uno R3 (0.016Hz - 250kHz* at 16MHz processor clock)   
-*(optional up to 7MHz see below)  
+*(optional up to 7.4MHz see below)  
   
 switchable to: frequency / period / rpm 
   
@@ -38,5 +38,5 @@ Diese Lösung ist technisch nicht ganz perfekt, funktioniert aber und liefert de
   
 Wenn alle sechs Stellen über die Temperatur bzw. Zeit stabil bleiben sollen, ist ein TCXO als Taktgeber notwendig. Das ist die aufwendigste aber auch beste Lösung.  
   
-### 2015-09-03: Vorteiler bis ca. 7 MHz  
+### 2015-09-03: Vorteiler bis ca. 7.4 MHz  
 Eine weitere Programmversion für den Arduino verwendet den Timer0 als Vorteiler 1/100, so dass Frequenzen bis ca. 7,4 MHz gemessen werden können. Der Eingang des Vorteilers liegt an IO4 (PD4/T0) und der Ausgang an IO6 (PD6/OC0A) der per Drahtbrücke direkt auf IO7 geschaltet wird: [Fmeter_UNOR3_mod.ino](https://github.com/BlackBrix/reciprocal-frequency-counter/blob/master/Fmeter_UNOR3_mod.ino). Ferner ist der Messablauf geändert, so dass die Auswertung (nicht aber die Messung selbst!) nicht mehr synchron zum Eingangssignal passiert, sondern im vorgegebenen Zeitraster. Im Programm sind dies 100 ms, die gewartet werden, bis die bis dahin eingetroffenen Impulse ausgewertet werden. Da minimal ein Eingangsimpuls benötigt wird, wird dieses Zeitraster erst ab Frequenzen > 10 Hz wirksam; bei niedrigeren Frequenzen muss entsprechend länger (eine ganze Periode) gewartet werden. Hierdurch werden bei genügend hoher Eingangsfrequenz im Mittelwert immer 10 Messungen/s ausgeführt. Weiterhin wird bei fehlendem Eingangssignal der Wert "0.00000 <dim>" ausgegeben. Die Zeit wird durch den Wert von TIMOUT vorgegeben. Ein Wert von 1000 entspricht einer Sekunde und kann zum Beispiel bei der Drehzahlmessung den Stillstand (<= 60 U/min) anzeigen, der dann jede Sekunde erneut ausgegeben wird.
