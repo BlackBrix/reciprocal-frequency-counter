@@ -1,6 +1,8 @@
-# reciprocal-frequency-counter  
+# reciprocal frequency-counter  
 reciprocal frequency counter with Arduino Uno R3 (0.016Hz - 250kHz* at 16MHz processor clock)   
 *(optional up to 7MHz see below)  
+  
+switchable to: frequency / period / rpm 
   
 originally by Michael Nowak:    
 http://www.mino-elektronik.de  
