@@ -2,7 +2,7 @@
 reciprocal frequency counter with Arduino Uno R3 (0.016Hz - 250kHz* at 16MHz processor clock)   
 *(optional up to 7MHz see below)  
   
-originally from Michael Nowak:    
+originally by Michael Nowak:    
 http://www.mino-elektronik.de  
 http://www.mino-elektronik.de/fmeter/fm_software.htm#bsp7  
   
